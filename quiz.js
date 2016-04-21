@@ -4,25 +4,36 @@ var newSubmit = document.getElementById("submit");
 // this is my tree object, it will accept two keys that are defined later as height and character
 var tree = {}
 
-// this is an event listener for the submit function
-newSubmit.addEventListener("click", function ( event ) {
-  // this takes the value entered in the text box that says height
+// this is an event listener for the submit function, it runs the function getValues
+newSubmit.addEventListener("click", getValues);
+
+// an event listener for using enter to submit information , it also runs the function getValues
+window.addEventListener("keyup", submitOnEnter);
+function submitOnEnter(event) {
+  if (event.keyCode === 13) {
+    getValues();
+  }
+}
+
+// created a new function to take the values and build the tree
+function getValues (){
+   // this takes the value entered in the text box that says height
   var inputHeight = newHeight.value;
   // this takes the value entered in the text box that says enter * here
   var inputRows = newRows.value;
-  //this is one of the keys to the object tree, it stores the value entered and passes it to the function
-  tree.height = inputHeight;
-  //this is the other key to the object tree, it stores the value entered and passes it to the function as well
-  tree.character = inputRows;
-  // this is calling the function
-  growTree(tree);
-} )
-
-// function submitOnEnter(inputElement, event) {
-//   if (event.keyCode === 13) {
-//     inputElement.form.submit();
-//   }
-// }
+  //This if statement uses an alert if there is no information in the input field(which would be a string)
+  if (inputHeight === "" || inputRows === "") {
+    alert("Please Enter Values For Both Inputs");
+    // this else statement runs only if there are values in the input fields, if not, it does not run the code below
+  } else {
+    //this is one of the keys to the object tree, it stores the value entered and passes it to the function
+    tree.height = inputHeight;
+    //this is the other key to the object tree, it stores the value entered and passes it to the function as well
+    tree.character = inputRows;
+    // this is calling the function
+    growTree(tree);
+  }
+}
 
 // This is running the function, obj is just a "variable", it's an anonymous way of running the code(Assigning a number instead of a name at a medical clinic)
 function growTree(obj) {
