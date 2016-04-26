@@ -2,7 +2,7 @@ var newHeight = document.getElementById("height");
 var newRows = document.getElementById("asterisk");
 var newSubmit = document.getElementById("submit");
 // this is my tree object, it will accept two keys that are defined later as height and character
-var tree = {}
+var tree = {};
 
 // this is an event listener for the submit function, it runs the function getValues
 newSubmit.addEventListener("click", getValues);
